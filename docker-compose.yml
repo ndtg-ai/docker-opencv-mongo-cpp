@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  cpp:
+    image: ntuangiang/opencv-mongo-cpp # Image latest
+    ports:
+      - "2202:22" # Remote
+      - "7778:7777" # Debug
+    restart: always
+
+  db:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27018:27017"
+      - "8082:8081"
+    restart: always

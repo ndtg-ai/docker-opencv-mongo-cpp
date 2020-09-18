@@ -16,9 +16,6 @@ RUN mkdir -p /tmp/opencv/build && cd /tmp/opencv/build && \
     cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/tmp/opencv_contrib/modules .. && \
     make -j7
 
-RUN cd /tmp/opencv/build/doc/ && \
-    make -j7 doxygen
-
 RUN cd /tmp/opencv/build && make install
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
